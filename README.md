@@ -1,8 +1,12 @@
 # POS NURU · iPad PWA
 
-เว็บไซต์ติดตั้ง: https://actiara26.github.io/POS-NURU/
+GitHub ใช้เก็บโปรแกรม ส่วนเว็บติดตั้งใช้ Cloudflare Pages (ไม่เปิด GitHub Pages สำหรับ POS ร้านจริง)
 
-คู่มือภาษาไทย: [ติดตั้ง ลงข้อมูล สำรอง และอัปเดตบน iPad](GUIDE_IPAD_TH.md) หรือ [อ่านแบบเว็บ](https://actiara26.github.io/POS-NURU/guide.html)
+คู่มือภาษาไทย: [ติดตั้ง ลงข้อมูล สำรอง และอัปเดตบน iPad](GUIDE_IPAD_TH.md)
+
+เว็บไซต์ติดตั้ง: [POS NURU](https://pos-nuru.pages.dev/) · [คู่มือแบบเว็บ](https://pos-nuru.pages.dev/guide.html)
+
+การเพิ่มไฟล์ใน GitHub อย่างเดียวไม่อัปเดตเว็บ ต้องเผยแพร่ชุด ZIP ใหม่ในโครงการ Cloudflare `pos-nuru` เดิมด้วย
 
 เปิดลิงก์เว็บไซต์ด้วย Safari → แชร์ → เพิ่มไปยังหน้าจอโฮม → เปิดจากไอคอน → ตั้ง PIN เจ้าของร้าน
 

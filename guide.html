@@ -2,13 +2,15 @@
 
 <p>คู่มือนี้ใช้กับรุ่น PWA เท่านั้น ไม่ต้องเปิด Windows หรือเครื่องเซิร์ฟเวอร์ไว้ในร้าน ตัวโปรแกรมดาวน์โหลดจากเว็บ HTTPS ส่วนการขาย คำนวณค่ามือ และเก็บข้อมูลทำใน iPad โดยตรง</p>
 
-<p>repository ของคุณคือ <strong>actiara26/POS-NURU</strong> มีอยู่แล้ว จึงข้ามขั้นสร้าง repository ใหม่ได้ เส้นทางเว็บของโครงการนี้คือ <code>https://actiara26.github.io/POS-NURU/</code> โดยจะใช้งานได้หลัง GitHub Pages เผยแพร่สำเร็จ</p>
+<p>repository ของคุณคือ <strong>actiara26/POS-NURU</strong> ใช้เก็บชุดโปรแกรม ส่วนเว็บติดตั้งใช้ <strong>Cloudflare Pages</strong> ไม่เปิด GitHub Pages สำหรับ POS ร้านจริง</p>
 
-<p>สถานะ: เตรียมโปรแกรมและชุดไฟล์สำหรับเผยแพร่แล้ว ยังต้องเปิด GitHub Pages และทดสอบบน iPad เครื่องที่จะใช้จริงก่อนรับเงินจริง การทดสอบเบราว์เซอร์บนคอมพิวเตอร์ยังแทนการทดสอบ Safari บนเครื่องคุณไม่ได้</p>
+<p>ลิงก์ติดตั้งประจำร้าน: <a href="https://pos-nuru.pages.dev/" target="_blank" rel="noopener">เปิด POS NURU</a> · <a href="https://pos-nuru.pages.dev/guide.html" target="_blank" rel="noopener">คู่มือฉบับเว็บ</a></p>
+
+<p>สถานะ: โปรแกรมผ่านการทดสอบในเบราว์เซอร์แล้ว ต้องตรวจลิงก์เผยแพร่และทดสอบบน iPad เครื่องที่จะใช้จริงก่อนรับเงินจริง การทดสอบบนคอมพิวเตอร์ยังแทนการทดสอบ Safari บนเครื่องคุณไม่ได้</p>
 
 <h2>1. แยกของสองอย่างก่อน</h2>
 
-<p>- <strong>ไฟล์โปรแกรม</strong>: อยู่ในชุด <code>massage-pos-github-pages.zip</code> เผยแพร่บนเว็บได้ มีหน้าจอและระบบทำงาน ไม่มีข้อมูลจริงของร้าน</p>
+<p>- <strong>ไฟล์โปรแกรม</strong>: อยู่ในชุด ZIP สำหรับเผยแพร่ PWA มีหน้าจอและระบบทำงาน ไม่มีข้อมูลจริงของร้าน</p>
 <p>- <strong>ข้อมูลร้าน</strong>: ชื่อพนักงาน บิล กะ ค่ามือ และบัญชีผู้ใช้ เก็บใน iPad ไฟล์สำรองลงท้าย <code>.sqlite</code> ต้องเก็บส่วนตัว ห้ามอัปโหลดเข้า repository สาธารณะ</p>
 
 <p>GitHub ไม่ใช่ที่สำรองยอดขายของร้าน การที่เว็บยังอยู่ไม่ได้แปลว่าข้อมูลใน iPad กู้คืนได้ ถ้าเครื่องเสียต้องใช้ไฟล์สำรองที่ส่งออกไว้เอง</p>
@@ -21,27 +23,30 @@
 <p>4. เปิดแอป <strong>ไฟล์ (Files)</strong> เตรียมโฟลเดอร์ <code>POS Backup</code> ใน <strong>iCloud Drive</strong> หรืออุปกรณ์จัดเก็บภายนอก อย่าเก็บสำเนาเดียวไว้ใน “บน iPad ของฉัน”</p>
 <p>5. เตรียมรายชื่อบริการ ราคา ระยะเวลา ค่ามือ พนักงาน ห้อง และเวลาเปิดร้าน ถ้ามีข้อมูล POS เดิม เตรียมไฟล์สำรอง <code>.sqlite</code> ที่สร้างจากเมนูสำรองของระบบเดิม</p>
 
-<h2>3. สร้างเว็บด้วย GitHub Pages ครั้งแรก</h2>
+<h2>3. เก็บโปรแกรมใน GitHub และเผยแพร่ด้วย Cloudflare Pages</h2>
 
-<p>ทำขั้นตอนนี้จากคอมพิวเตอร์สะดวกที่สุด คอมพิวเตอร์ใช้เพื่ออัปโหลดโปรแกรมครั้งแรกและอัปเดตเท่านั้น ไม่ต้องเปิดค้างที่ร้าน หากมีเพียง iPad ก็สร้าง repository ได้ แต่การอัปโหลดโฟลเดอร์ย่อยจำนวนมากใน Safari อาจไม่สะดวก ให้ผู้ดูแลอัปโหลดชุดโปรแกรมครั้งแรกแทน</p>
+<p>GitHub เก็บและติดตามรุ่นโปรแกรม ส่วน Cloudflare แจกไฟล์ติดตั้ง HTTPS ร้านไม่ต้องมีเซิร์ฟเวอร์และไม่ต้องเปิดคอมพิวเตอร์ค้าง โฮสต์ทั้งสองไม่ได้รับฐานข้อมูลร้านตามไปด้วย เลือกไม่ใช้ GitHub Pages เพราะมีข้อจำกัดเกี่ยวกับเว็บไซต์ที่มุ่งรองรับธุรกรรมเชิงพาณิชย์ <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits" target="_blank" rel="noopener">ข้อจำกัด GitHub Pages</a></p>
 
-<p>1. เข้า GitHub และเข้าสู่ระบบด้วยบัญชีของคุณ</p>
-<p>2. สร้าง <strong>New repository</strong> ชื่อ <code>massage-pos</code> ใช้ชื่อนี้ต่อเนื่อง อย่าใส่ชื่อลูกค้าหรือข้อมูลลับในชื่อ repository</p>
-<p>3. GitHub Free ใช้ Pages กับ repository แบบ <strong>Public</strong> ได้ โปรแกรมที่เผยแพร่จะเปิดดูได้โดยสาธารณะ แต่ฐานข้อมูลใน iPad ไม่ได้ถูกอัปโหลดตามไปด้วย หากไม่ต้องการเผยแพร่ตัวโปรแกรม ให้ตรวจแผน GitHub ที่รองรับ private repository ก่อน <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site" target="_blank" rel="noopener">เงื่อนไข GitHub Pages</a></p>
-<p>4. สร้าง README เพื่อให้มีสาขา <code>main</code></p>
-<p>5. แตกไฟล์ <code>massage-pos-github-pages.zip</code> จะพบ <code>index.html</code>, <code>sw.js</code>, <code>manifest.webmanifest</code>, รูปไอคอน และโฟลเดอร์ <code>releases</code></p>
-<p>6. ใน repository เลือก <strong>Add file → Upload files</strong> ลาก <strong>ไฟล์และโฟลเดอร์ข้างในชุดที่แตกแล้ว</strong> ไปวาง ไม่ใช่อัปโหลด ZIP เพียงไฟล์เดียว และไม่ใช่อัปโหลดโฟลเดอร์ <code>D:\POS</code> ทั้งโฟลเดอร์</p>
-<p>7. ตรวจว่าที่ระดับบนสุดเห็น <code>index.html</code> และ <code>releases</code> อยู่ข้างกัน แล้วกด <strong>Commit changes</strong> ลง <code>main</code> ไฟล์ <code>.nojekyll</code> ที่อยู่ในชุดควรอัปโหลดด้วย ถ้ามองไม่เห็นไฟล์ซ่อน โครงสร้างรุ่นนี้ไม่ได้พึ่งโฟลเดอร์ชื่อขึ้นต้น <code>_</code></p>
-<p>8. เข้า <strong>Settings → Pages → Build and deployment</strong> เลือก <strong>Source: Deploy from a branch</strong>, <strong>Branch: main</strong>, <strong>Folder: /(root)</strong> แล้ว <strong>Save</strong></p>
-<p>9. รอให้ GitHub แสดงว่าเผยแพร่สำเร็จ และเปิดลิงก์ที่ GitHub แสดง ลักษณะเป็น <code>https://ชื่อบัญชี.github.io/massage-pos/</code> ข้อความนี้เป็นรูปแบบตัวอย่าง ไม่ใช่ลิงก์ร้านที่สร้างให้แล้ว <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site" target="_blank" rel="noopener">ขั้นตอนเผยแพร่ของ GitHub</a></p>
-<p>10. จดลิงก์จริงไว้ ใช้ลิงก์ HTTPS นี้ติดตั้งใน iPad อย่าใช้หน้ารายการโค้ด <code>github.com/...</code> และอย่าใช้ <code>127.0.0.1</code> หรือไฟล์ HTML จากแอปไฟล์</p>
+<p>สำหรับผู้ดูแล: ทำขั้นตอนเผยแพร่จากคอมพิวเตอร์สะดวกที่สุด แต่หลังติดตั้งแล้วใช้ iPad เครื่องเดียวทำงานร้านได้</p>
+
+<p>1. เก็บชุดโปรแกรมรุ่นล่าสุดใน repository <strong>actiara26/POS-NURU</strong> โดยไม่อัปโหลดข้อมูลจริง</p>
+<p>2. เข้าบัญชี Cloudflare ของคุณ เปิด <strong>Workers &amp; Pages → Create application → Pages → Direct Upload</strong> ชื่อปุ่มอาจเป็น <strong>Get started / Drag and drop your files</strong> ตามหน้าจอที่ Cloudflare แสดง</p>
+<p>3. ตั้งชื่อโครงการร้านและเลือกอัปโหลดชุด ZIP สำหรับเผยแพร่ ภายใน ZIP ต้องมี <code>index.html</code>, <code>sw.js</code> และโฟลเดอร์ <code>releases</code> อยู่ระดับบนสุด ไม่ซ้อนโฟลเดอร์โครงการอีกชั้น</p>
+<p>4. ตรวจว่าอัปโหลดครบ ไม่มีไฟล์ขึ้นผิดพลาด แล้วเลือก <strong>Deploy site / Save and Deploy</strong></p>
+<p>5. รอสถานะเผยแพร่สำเร็จ จด <strong>Production URL</strong> ที่ลงท้าย <code>.pages.dev</code> หรือโดเมนที่ตั้งไว้ ใช้ลิงก์นี้ต่อเนื่อง ไม่ติดตั้งจากลิงก์ Preview ที่เปลี่ยนทุกครั้ง</p>
+<p>6. เปิด Production URL ตรวจว่ามีหน้าติดตั้ง/ตั้งเจ้าของและไม่มีข้อผิดพลาด จึงส่งลิงก์ให้ iPad ติดตั้ง</p>
+<p>7. การเผยแพร่แบบ Direct Upload ต้องอัปโหลดรุ่นใหม่ที่ Cloudflare ด้วย การอัปโหลด GitHub อย่างเดียวจะไม่เปลี่ยนเว็บไซต์ และไม่ควรเปลี่ยนโครงการ/โดเมนภายหลังโดยไม่มีแผนย้ายข้อมูล</p>
+
+<p>Cloudflare รองรับการอัปโหลด ZIP ทางหน้าจอสำหรับไฟล์ที่สร้างเสร็จแล้ว โดยไม่ต้องเชื่อมสิทธิ์ GitHub เพิ่มเติม <a href="https://developers.cloudflare.com/pages/get-started/direct-upload/" target="_blank" rel="noopener">คู่มือ Direct Upload</a></p>
+
+<p>ใช้ลิงก์ HTTPS ที่เผยแพร่จริงติดตั้งใน iPad อย่าใช้หน้ารายการโค้ด <code>github.com/...</code>, ลิงก์ <code>127.0.0.1</code> หรือเปิดไฟล์ HTML จากแอปไฟล์</p>
 
 <p>ไม่อัปโหลด <code>data</code>, <code>.env</code>, ไฟล์สำรอง <code>.sqlite</code>, ไฟล์ log, บัญชีผู้ใช้จริง หรือโฟลเดอร์โครงการทั้งหมด ชุด ZIP ที่จัดให้คัดเฉพาะไฟล์เผยแพร่แล้ว</p>
 
 <h2>4. ติดตั้งบนหน้าจอโฮม</h2>
 
 <p>1. บน iPad เปิด <strong>Safari</strong> ปกติ ไม่ใช้ Private Browsing</p>
-<p>2. เปิดลิงก์ GitHub Pages ของร้าน รอหน้าคำแนะนำติดตั้ง</p>
+<p>2. เปิด Production URL ของร้านจาก Cloudflare รอหน้าคำแนะนำติดตั้ง</p>
 <p>3. กดปุ่ม <strong>แชร์</strong> แล้วเลือก <strong>เพิ่มไปยังหน้าจอโฮม (Add to Home Screen)</strong></p>
 <p>4. ตั้งชื่อ <code>Massage POS</code> และเปิด <strong>Open as Web App / เปิดเป็นเว็บแอป</strong> หากเครื่องแสดงตัวเลือกนี้ แล้วกด <strong>เพิ่ม</strong> เมนูอาจต่างกันตามรุ่น iPadOS <a href="https://support.apple.com/en-euro/guide/ipad/ipad8f1f7a29/ipados" target="_blank" rel="noopener">คู่มือ Apple</a></p>
 <p>5. ปิดแท็บ Safari ของ POS กลับหน้าจอโฮม แล้วกดไอคอนที่เพิ่งเพิ่ม</p>
@@ -131,11 +136,11 @@
 
 <h2>10. อัปเดตเวอร์ชันอย่างไร</h2>
 
-<h3>ผู้ดูแลนำโปรแกรมรุ่นใหม่ขึ้น GitHub</h3>
+<h3>ผู้ดูแลเผยแพร่โปรแกรมรุ่นใหม่</h3>
 
-<p>ใช้ชุด ZIP รุ่นใหม่อัปโหลดไป repository และโฟลเดอร์เดิม อัปโหลด <code>releases/รหัสรุ่นใหม่</code> ให้ครบก่อน แล้วอัปโหลดไฟล์ระดับบนสุดโดยเฉพาะ <code>sw.js</code> กับ <code>index.html</code> เป็นขั้นท้าย ไม่ลบ <code>releases</code> รุ่นเก่าทันที และไม่แก้ไฟล์ในรหัสรุ่นเดิม ใช้รหัสใหม่ทุกครั้ง</p>
+<p>เก็บชุด ZIP รุ่นใหม่ใน GitHub แล้วเปิดโครงการเดิมใน Cloudflare → <strong>Create a new deployment → Production</strong> → อัปโหลดชุด ZIP ให้ครบ → <strong>Save and Deploy</strong> ห้ามสร้างโครงการหรือเปลี่ยนโดเมนทุกครั้ง ใช้รหัสรุ่นใหม่ทุกครั้งและไม่แก้ไขไฟล์ภายในรหัสรุ่นที่เผยแพร่แล้ว</p>
 
-<p>ตัว POS ตรวจความครบถ้วนด้วยรหัสตรวจไฟล์ ถ้า GitHub ยังเผยแพร่ไม่ครบหรือดาวน์โหลดขาด จะไม่ขึ้นว่ารุ่นใหม่พร้อม รอเผยแพร่สำเร็จแล้วตรวจอีกครั้ง</p>
+<p>ตัว POS ตรวจความครบถ้วนด้วยรหัสตรวจไฟล์ ถ้า Cloudflare ยังเผยแพร่ไม่ครบหรือดาวน์โหลดขาด จะไม่ขึ้นว่ารุ่นใหม่พร้อม รอเผยแพร่สำเร็จแล้วตรวจอีกครั้ง การย้อน Deployment บนโฮสต์ไม่ใช่การกู้ฐานข้อมูลใน iPad และไม่ควรใช้แทนขั้นตอนแก้ปัญหาข้อมูล</p>
 
 <h3>เจ้าของติดตั้งบน iPad</h3>
 
@@ -153,9 +158,9 @@
 <h2>11. ข้อจำกัดที่ต้องรู้</h2>
 
 <p>- เป็นฐานข้อมูลของ iPad เครื่องเดียว ไม่มีซิงก์ร้านระหว่างหลายเครื่อง</p>
-<p>- GitHub Pages แจกเฉพาะโปรแกรม ไม่มีระบบสำรองยอดขายออนไลน์ให้เอง</p>
+<p>- GitHub เก็บโปรแกรมและ Cloudflare แจกไฟล์ติดตั้ง ไม่มีระบบสำรองยอดขายออนไลน์ให้เอง</p>
 <p>- รุ่นนี้ยังไม่ส่ง Google Sheets, Google Drive หรือ Telegram อัตโนมัติ เมนูที่ยังใช้ไม่ได้ถูกซ่อนหรือปฏิเสธคำสั่งไว้</p>
-<p>- ห้ามล้างข้อมูลเว็บไซต์ ลบไอคอน ย้ายโดเมน เปลี่ยนชื่อบัญชี GitHub หรือเปลี่ยนชื่อ repository โดยไม่มีสำเนาและแผนย้ายข้อมูล</p>
+<p>- ห้ามล้างข้อมูลเว็บไซต์ ลบไอคอน ย้ายโดเมน หรือเปลี่ยน Production URL ของ Cloudflare โดยไม่มีสำเนาและแผนย้ายข้อมูล</p>
 <p>- ถ้าเครื่องสูญหายหรือเสีย กู้ได้ถึงข้อมูลในไฟล์สำรองนอกเครื่องล่าสุดเท่านั้น</p>
 <p>- ถ้าเปิดแล้วกลับมาหน้าตั้งเจ้าของทั้งที่เคยขายแล้ว ให้หยุดก่อน อาจเปิดผิดลิงก์ ผิดเบราว์เซอร์ หรือพื้นที่เก็บถูกล้าง อย่าตั้งร้านใหม่ทับความเข้าใจว่าข้อมูลเดิมไม่มี</p>
 <p>- ถ้าล็อก PIN เพราะใส่ผิด ให้รอตามข้อความ ไม่แก้ด้วยการล้างข้อมูล</p>
